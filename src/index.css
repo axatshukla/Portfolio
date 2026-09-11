@@ -1,0 +1,214 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-primary: #edf2f4;
+  --bg-secondary: #e2e6ea;
+  --card-bg: #ffffff;
+  --footer-bg: #e2e6ea;
+  --text-primary: #2b2d42;
+  --text-secondary: #8d99ae;
+  --text-muted: #a0aab6;
+  --border-color: #c8cdd2;
+  --accent-color: #1b263b;
+  --tag-bg: #dfe3e7;
+  font-family: 'Red Hat Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: 'Red Hat Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}
+
+/* Hero dark grid / dot matrix background */
+.hero-pattern {
+  background-color: #1b263b;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Subtle card styling */
+.clean-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 1.25rem;
+  box-shadow: rgba(0, 0, 0, 0.03) 0px 4px 16px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.clean-card:hover {
+  box-shadow: rgba(0, 0, 0, 0.07) 0px 8px 24px;
+}
+
+/* Floating dock */
+.floating-dock {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 8px 32px;
+  border-radius: 1.125rem;
+  backdrop-filter: blur(12px);
+}
+
+/* Tag Pill */
+.tech-tag {
+  background-color: var(--tag-bg);
+  color: var(--text-primary);
+  font-size: 0.72rem;
+  font-weight: 500;
+  padding: 0.22rem 0.65rem;
+  border-radius: 9999px;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.15s ease;
+}
+
+.tech-tag:hover {
+  background-color: #d1d8df;
+}
+
+/* Interactive button effects */
+.btn-primary {
+  background-color: var(--accent-color);
+  color: #ffffff;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  background-color: #0d1b2a;
+  box-shadow: 0 4px 12px rgba(27, 38, 59, 0.25);
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-secondary:hover {
+  transform: translateY(-1px);
+  border-color: var(--text-secondary);
+  background-color: #f8fafc;
+}
+
+/* Timeline rail */
+.timeline-rail {
+  position: absolute;
+  top: 1.5rem;
+  bottom: 1.5rem;
+  left: 0.5rem;
+  width: 2px;
+  background-color: var(--border-color);
+}
+
+@keyframes viewFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.view-enter {
+  animation: viewFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes headingAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-16px) scale(0.96);
+    filter: blur(6px);
+    letter-spacing: -0.025em;
+  }
+  65% {
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    letter-spacing: -0.01em;
+  }
+}
+
+.animate-heading {
+  opacity: 0;
+  animation: headingAnimation 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards;
+}
+
+@keyframes heroNameAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+    filter: blur(8px);
+    letter-spacing: -0.03em;
+  }
+  65% {
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+    letter-spacing: -0.02em;
+  }
+}
+
+.animate-hero-name {
+  opacity: 0;
+  display: inline-block;
+  will-change: transform, opacity, filter;
+  animation: heroNameAnimation 1.05s cubic-bezier(0.16, 1, 0.3, 1) 0.18s forwards;
+}
+
+@keyframes heroSubAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-hero-sub {
+  opacity: 0;
+  animation: heroSubAnimation 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.35s forwards;
+}
+
+.animate-hero-meta {
+  opacity: 0;
+  animation: heroSubAnimation 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.48s forwards;
+}
+
+
+
+
