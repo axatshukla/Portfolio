@@ -118,70 +118,62 @@ export const projects = [
 
 export const skillCategories = [
   {
-    title: "AI & LLMs",
-    skills: [
-      { name: "LangChain", iconType: "chain", color: "#2E8B57", bg: "#EBF7EE" },
-      { name: "LangGraph", iconType: "graph", color: "#1E3A8A", bg: "#EEF2FF" },
-      { name: "RAG", iconType: "rag", color: "#0284C7", bg: "#F0F9FF" },
-      { name: "LLM Integration", iconType: "brain", color: "#7C3AED", bg: "#F5F3FF" },
-      { name: "Prompt Engineering", iconType: "prompt", color: "#111827", bg: "#F3F4F6" },
-      { name: "Model Context Protocol", iconType: "mcp", color: "#9333EA", bg: "#FAF5FF" },
-      { name: "LlamaStack / Ollama", iconType: "llama", color: "#0F172A", bg: "#F1F5F9" },
-      { name: "Google GenAI SDK", iconType: "google", color: "#EA4335", bg: "#FEF2F2" }
-    ]
-  },
-  {
-    title: "Backend",
+    title: "AI / ML",
     skills: [
       { name: "Python", iconType: "python", color: "#3776AB", bg: "#F0F7FC" },
-      { name: "FastAPI", iconType: "fastapi", color: "#059669", bg: "#ECFDF5" },
-      { name: "Pydantic", iconType: "pydantic", color: "#E11D48", bg: "#FFF1F2" },
-      { name: "Node.js", iconType: "nodejs", color: "#16A34A", bg: "#F0FDF4" },
-      { name: "Express", iconType: "express", color: "#374151", bg: "#F9FAFB" },
-      { name: "GraphQL", iconType: "graphql", color: "#E535AB", bg: "#FDF2F8" },
-      { name: "REST APIs", iconType: "api", color: "#0284C7", bg: "#F0F9FF" }
+      { name: "Machine Learning", iconType: "ml", color: "#6366F1", bg: "#EEF2FF" },
+      { name: "Scikit-learn", iconType: "scikit", color: "#F89939", bg: "#FFF7ED" },
+      { name: "Pandas", iconType: "pandas", color: "#150458", bg: "#F5F3FF" },
+      { name: "NumPy", iconType: "numpy", color: "#013243", bg: "#F0F9FF" },
+      { name: "Deep Learning", iconType: "dl", color: "#8B5CF6", bg: "#F5F3FF" },
+      { name: "NLP", iconType: "nlp", color: "#059669", bg: "#ECFDF5" },
+      { name: "Generative AI", iconType: "genai", color: "#7C3AED", bg: "#FAF5FF" },
+      { name: "LLMs", iconType: "llms", color: "#9333EA", bg: "#FAF5FF" },
+      { name: "RAG", iconType: "rag", color: "#0284C7", bg: "#F0F9FF" }
     ]
   },
   {
-    title: "Frontend",
+    title: "Software Engineering",
+    skills: [
+      { name: "Java", iconType: "java", color: "#E76F00", bg: "#FFF7ED" },
+      { name: "DSA", iconType: "dsa", color: "#2563EB", bg: "#EFF6FF" },
+      { name: "OOP", iconType: "oop", color: "#4F46E5", bg: "#EEF2FF" },
+      { name: "SQL", iconType: "sql", color: "#0284C7", bg: "#F0F9FF" },
+      { name: "REST APIs", iconType: "api", color: "#0284C7", bg: "#F0F9FF" },
+      { name: "Git", iconType: "git", color: "#F05032", bg: "#FEF2EE" }
+    ]
+  },
+  {
+    title: "Web Development",
     skills: [
       { name: "HTML5", iconType: "html5", color: "#E34F26", bg: "#FEF2EE" },
       { name: "CSS3", iconType: "css3", color: "#1572B6", bg: "#F0F7FC" },
       { name: "JavaScript", iconType: "javascript", color: "#F7DF1E", bg: "#FEFDE8" },
       { name: "TypeScript", iconType: "typescript", color: "#3178C6", bg: "#EFF6FF" },
       { name: "React", iconType: "react", color: "#06B6D4", bg: "#ECFEFF" },
-      { name: "Vue", iconType: "vue", color: "#10B981", bg: "#ECFDF5" },
+      { name: "Vue.js", iconType: "vue", color: "#42B883", bg: "#ECFDF5" },
       { name: "Next.js", iconType: "nextjs", color: "#111827", bg: "#F3F4F6" },
+      { name: "Node.js", iconType: "nodejs", color: "#16A34A", bg: "#F0FDF4" },
+      { name: "FastAPI", iconType: "fastapi", color: "#059669", bg: "#ECFDF5" },
       { name: "Tailwind CSS", iconType: "tailwind", color: "#38BDF8", bg: "#F0F9FF" }
-    ]
-  },
-  {
-    title: "Cloud & DevOps",
-    skills: [
-      { name: "Docker", iconType: "docker", color: "#2496ED", bg: "#EFF6FF" },
-      { name: "Podman", iconType: "podman", color: "#892CA0", bg: "#FAF5FF" },
-      { name: "OpenShift", iconType: "openshift", color: "#EE0000", bg: "#FEF2F2" },
-      { name: "CI/CD", iconType: "cicd", color: "#F59E0B", bg: "#FFFBEB" },
-      { name: "Github Actions", iconType: "actions", color: "#2088FF", bg: "#EFF6FF" }
     ]
   },
   {
     title: "Databases",
     skills: [
+      { name: "MySQL", iconType: "mysql", color: "#00758F", bg: "#EFF6FF" },
       { name: "MongoDB", iconType: "mongodb", color: "#47A248", bg: "#F0FDF4" },
-      { name: "MySQL", iconType: "mysql", color: "#4479A1", bg: "#EFF6FF" },
-      { name: "PostgreSQL", iconType: "postgres", color: "#336791", bg: "#F0F7FC" },
-      { name: "ChromaDB", iconType: "chromadb", color: "#F59E0B", bg: "#FFFBEB" },
       { name: "Supabase", iconType: "supabase", color: "#3ECF8E", bg: "#ECFDF5" }
     ]
   },
   {
-    title: "Tools & Others",
+    title: "Tools & Design",
     skills: [
-      { name: "Git", iconType: "git", color: "#F05032", bg: "#FEF2EE" },
+      { name: "GitHub", iconType: "github", color: "#181717", bg: "#F3F4F6" },
+      { name: "Docker", iconType: "docker", color: "#2496ED", bg: "#EFF6FF" },
       { name: "Linux", iconType: "linux", color: "#FCC624", bg: "#FEFCE8" },
-      { name: "Figma", iconType: "figma", color: "#F24E1E", bg: "#FEF2EE" },
-      { name: "Postman", iconType: "postman", color: "#FF6C37", bg: "#FEF3EE" }
+      { name: "Jupyter", iconType: "jupyter", color: "#F37626", bg: "#FFF7ED" },
+      { name: "Figma", iconType: "figma", color: "#F24E1E", bg: "#FEF2EE" }
     ]
   }
 ];
