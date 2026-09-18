@@ -84,11 +84,11 @@ export default function HeroSection({ personalInfo, onViewResume, onCopyEmail })
       {/* 2. Photo + About Intro Row */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-5 items-stretch">
         {/* Left: Profile Photo Card */}
-        <div className="md:col-span-4 bg-white rounded-3xl overflow-hidden border border-[var(--border-color)] shadow-sm flex items-center justify-center min-h-[260px] max-h-[340px] relative group">
+        <div className="md:col-span-4 bg-white rounded-3xl overflow-hidden border border-[var(--border-color)] shadow-sm flex items-center justify-center relative group w-full aspect-[3/4] max-h-[500px] md:max-h-none md:aspect-auto md:h-full md:min-h-[280px]">
           <img
             src={personalInfo.avatarUrl || "/profile.png"}
             alt={personalInfo.name}
-            className="w-full h-full object-cover object-top sm:object-center group-hover:scale-105 transition-transform duration-500"
+            className="w-full h-full object-cover object-top md:object-[center_20%] group-hover:scale-105 transition-transform duration-500"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
         </div>
