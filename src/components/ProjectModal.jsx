@@ -17,6 +17,11 @@ export default function ProjectModal({ project, onClose }) {
             <h2 className="text-xl font-bold text-[var(--text-primary)]">
               {project.title}
             </h2>
+            {project.subtitle && (
+              <p className="text-xs text-[var(--text-secondary)] mt-1 leading-relaxed">
+                {project.subtitle}
+              </p>
+            )}
           </div>
           <button
             onClick={onClose}
@@ -37,20 +42,35 @@ export default function ProjectModal({ project, onClose }) {
             />
           </div>
 
-          {/* Description */}
+          {/* Impact Metrics */}
+          {project.impactMetrics && (
+            <div className="p-3 sm:p-3.5 bg-slate-50 border border-slate-200/80 rounded-2xl flex items-center gap-3">
+              <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+              <div>
+                <span className="text-[10px] font-mono font-bold uppercase text-[var(--text-secondary)] block mb-0.5">
+                  Impact Metrics
+                </span>
+                <span className="text-xs font-mono font-semibold text-slate-800">
+                  {project.impactMetrics}
+                </span>
+              </div>
+            </div>
+          )}
+
+          {/* Description / Overview */}
           <div>
             <h3 className="text-xs font-mono font-bold text-[var(--text-secondary)] uppercase mb-1">
               Overview
             </h3>
             <p className="text-sm text-[var(--text-primary)] leading-relaxed">
-              {project.description}
+              {project.overview || project.description}
             </p>
           </div>
 
           {/* Key Capabilities */}
           <div>
             <h3 className="text-xs font-mono font-bold text-[var(--text-secondary)] uppercase mb-2">
-              Key Features & Architectural Highlights
+              Key Features & Impact
             </h3>
             <ul className="space-y-1.5 text-xs text-[var(--text-secondary)]">
               {(project.highlights || [

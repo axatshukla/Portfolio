@@ -112,6 +112,27 @@ export const projects = [
       "Interactive Kanban board, sprint velocity analytics, structured task tables, and calendar deadline tracking.",
       "Dual database architecture (SQLite WAL + Neon Cloud Postgres) and real-life email dispatch via Gmail SMTP & Resend."
     ]
+  },
+  {
+    id: "proj-3",
+    title: "ChurnIQ",
+    subtitle: "Production-oriented customer churn prediction system achieving 0.8435 ROC-AUC and 78.9% recall on a held-out test set.",
+    category: "ML & Data Science",
+    description: "End-to-end ML platform for predicting telecom customer churn with optimized decision thresholds, automated testing, and production-ready API serving.",
+    overview: "End-to-end ML workflow for 7,043 telecom customers, covering data validation, EDA, feature engineering, model selection, threshold optimization, and REST API inference.",
+    impactMetrics: "0.8435 ROC-AUC · 78.9% Recall · 63.7% F1 · 7,043 Customers · 19 Tests",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=700&q=80",
+    tags: ["Python", "Scikit-learn", "FastAPI", "XGBoost", "MLflow"],
+    liveDemo: "https://github.com/axatshukla/ChurnIQ",
+    codeLink: "https://github.com/axatshukla/ChurnIQ",
+    highlights: [
+      "0.8435 ROC-AUC and 0.6365 F1 on 1,409 unseen test records.",
+      "78.88% recall with an optimized 0.48 decision threshold.",
+      "5-fold CV benchmarking Random Forest, Logistic Regression & XGBoost.",
+      "19 automated tests covering features, preprocessing, and API behavior.",
+      "Atomic sklearn Pipeline keeps training and inference preprocessing consistent.",
+      "FastAPI + MLflow provide API serving and experiment tracking."
+    ]
   }
 ];
 

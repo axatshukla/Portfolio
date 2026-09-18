@@ -156,10 +156,24 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
                 transform: isHovered ? 'translateZ(9px)' : 'translateZ(0px)',
                 transition: 'transform 0.12s ease-out',
               }}
-              className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-3 mb-4 min-h-[3.25rem]"
+              className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-3 mb-3 min-h-[3rem]"
             >
               {proj.description}
             </p>
+
+            {/* Impact Metrics */}
+            {proj.impactMetrics && (
+              <div
+                style={{
+                  transform: isHovered ? 'translateZ(10px)' : 'translateZ(0px)',
+                  transition: 'transform 0.12s ease-out',
+                }}
+                className="mb-3 px-2.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 font-mono text-[10.5px] font-semibold text-slate-700 flex items-center gap-1.5"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
+                <span className="truncate">{proj.impactMetrics}</span>
+              </div>
+            )}
 
             {/* Project Preview Image with subtle depth */}
             <div
