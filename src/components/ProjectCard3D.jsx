@@ -62,7 +62,7 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
 
   return (
     <div
-      className="w-full select-none"
+      className="w-full h-full select-none"
       style={{ perspective: '1400px' }}
     >
       <div
@@ -79,7 +79,7 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
             : 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease',
           transformStyle: 'preserve-3d',
         }}
-        className={`relative bg-white rounded-3xl p-6 sm:p-7 lg:p-8 border border-[var(--border-color)] shadow-sm hover:shadow-[0_20px_50px_rgba(27,38,59,0.14)] transition-all duration-300 flex flex-col justify-between overflow-hidden group cursor-pointer ${
+        className={`relative bg-white rounded-3xl p-6 sm:p-7 lg:p-8 border shadow-sm hover:shadow-[0_20px_50px_rgba(27,38,59,0.14)] transition-all duration-300 flex flex-col justify-between overflow-hidden group cursor-pointer h-full ${
           isHovered ? 'border-slate-400' : 'border-[var(--border-color)]'
         }`}
       >
@@ -130,8 +130,8 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
         />
 
         {/* Inner Card Content with Subtle 3D Depth */}
-        <div className="relative z-20 flex flex-col justify-between h-full">
-          <div>
+        <div className="relative z-20 flex flex-col justify-between h-full flex-1">
+          <div className="flex flex-col flex-1">
             {/* Top Row: Title + Category Badge with subtle 3D Elevation */}
             <div
               style={{
@@ -140,7 +140,7 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
                   : 'translateZ(0px)',
                 transition: 'transform 0.12s ease-out',
               }}
-              className="flex items-start justify-between gap-2 mb-2"
+              className="flex items-start justify-between gap-2 mb-2 min-h-[2rem]"
             >
               <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors">
                 {proj.title}
@@ -150,32 +150,18 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
               </span>
             </div>
 
-            {/* Description */}
+            {/* Description - Equal height across all cards */}
             <p
               style={{
                 transform: isHovered ? 'translateZ(9px)' : 'translateZ(0px)',
                 transition: 'transform 0.12s ease-out',
               }}
-              className="text-xs sm:text-[13px] text-[var(--text-secondary)] leading-relaxed line-clamp-3 mb-3.5 min-h-[3.25rem]"
+              className="text-xs sm:text-[13px] text-[var(--text-secondary)] leading-relaxed line-clamp-3 h-[3.85rem] sm:h-[4.2rem] mb-4"
             >
               {proj.description}
             </p>
 
-            {/* Impact Metrics */}
-            {proj.impactMetrics && (
-              <div
-                style={{
-                  transform: isHovered ? 'translateZ(10px)' : 'translateZ(0px)',
-                  transition: 'transform 0.12s ease-out',
-                }}
-                className="mb-3.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 font-mono text-[10.5px] sm:text-[11px] font-semibold text-slate-700 flex items-center gap-1.5"
-              >
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-                <span className="truncate">{proj.impactMetrics}</span>
-              </div>
-            )}
-
-            {/* Project Preview Image with subtle depth */}
+            {/* Project Preview Image with subtle depth - Equal height across all cards */}
             <div
               onClick={() => onSelectProject(proj)}
               style={{
@@ -184,7 +170,7 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
                   : 'translateZ(0px)',
                 transition: 'transform 0.12s ease-out',
               }}
-              className="w-full h-52 sm:h-56 lg:h-64 rounded-2xl overflow-hidden bg-slate-900 mb-5 cursor-pointer relative group/img border border-[var(--border-color)]/70 shadow-inner"
+              className="w-full h-48 sm:h-52 lg:h-56 rounded-2xl overflow-hidden bg-slate-900 mb-4 cursor-pointer relative group/img border border-[var(--border-color)]/70 shadow-inner shrink-0"
             >
               <img
                 src={proj.image}
@@ -197,13 +183,13 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
               </div>
             </div>
 
-            {/* Tech Tags */}
+            {/* Tech Tags - Equal height & alignment across all cards */}
             <div
               style={{
                 transform: isHovered ? 'translateZ(10px)' : 'translateZ(0px)',
                 transition: 'transform 0.12s ease-out',
               }}
-              className="flex flex-wrap gap-2 mb-6"
+              className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 h-[4.25rem] sm:h-[4.5rem] overflow-hidden content-start"
             >
               {proj.tags.map((tag, tIdx) => (
                 <span
@@ -216,7 +202,7 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
             </div>
           </div>
 
-          {/* Action Buttons */}
+          {/* Action Buttons - Pinned uniformly to the bottom */}
           <div
             style={{
               transform: isHovered
@@ -224,7 +210,7 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
                 : 'translateZ(0px)',
               transition: 'transform 0.12s ease-out',
             }}
-            className="grid grid-cols-2 gap-3 pt-3 border-t border-[var(--border-color)]/50"
+            className="grid grid-cols-2 gap-3 pt-3 border-t border-[var(--border-color)]/50 mt-auto"
             onClick={(e) => e.stopPropagation()}
           >
             <a

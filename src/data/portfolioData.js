@@ -88,6 +88,7 @@ export const projects = [
     title: "Stride",
     category: "Full Stack & Systems",
     description: "High-performance sprint management & team collaboration workspace engineered with React 19, TypeScript, Express, SQLite WAL, Neon Cloud Postgres, and real email delivery.",
+    impactMetrics: "Full Stack Workspace · Dual DB (SQLite + Postgres) · RBAC · Real-time Tasks",
     image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=700&q=80",
     tags: ["React 19", "TypeScript", "Node.js", "Express", "PostgreSQL", "SQLite"],
     liveDemo: "https://strideeee.netlify.app/",
