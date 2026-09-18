@@ -79,7 +79,7 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
             : 'transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s ease',
           transformStyle: 'preserve-3d',
         }}
-        className={`relative bg-white rounded-3xl p-5 sm:p-6 border border-[var(--border-color)] shadow-sm hover:shadow-[0_18px_45px_rgba(27,38,59,0.12)] transition-all duration-300 flex flex-col justify-between overflow-hidden group cursor-pointer ${
+        className={`relative bg-white rounded-3xl p-6 sm:p-7 lg:p-8 border border-[var(--border-color)] shadow-sm hover:shadow-[0_20px_50px_rgba(27,38,59,0.14)] transition-all duration-300 flex flex-col justify-between overflow-hidden group cursor-pointer ${
           isHovered ? 'border-slate-400' : 'border-[var(--border-color)]'
         }`}
       >
@@ -140,12 +140,12 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
                   : 'translateZ(0px)',
                 transition: 'transform 0.12s ease-out',
               }}
-              className="flex items-start justify-between gap-2 mb-1.5"
+              className="flex items-start justify-between gap-2 mb-2"
             >
-              <h3 className="text-base sm:text-lg font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors">
+              <h3 className="text-lg sm:text-xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-color)] transition-colors">
                 {proj.title}
               </h3>
-              <span className="text-[10px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[var(--tag-bg)] text-[var(--text-primary)] shrink-0">
+              <span className="text-[10.5px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[var(--tag-bg)] text-[var(--text-primary)] shrink-0">
                 {proj.category}
               </span>
             </div>
@@ -156,7 +156,7 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
                 transform: isHovered ? 'translateZ(9px)' : 'translateZ(0px)',
                 transition: 'transform 0.12s ease-out',
               }}
-              className="text-xs text-[var(--text-secondary)] leading-relaxed line-clamp-3 mb-3 min-h-[3rem]"
+              className="text-xs sm:text-[13px] text-[var(--text-secondary)] leading-relaxed line-clamp-3 mb-3.5 min-h-[3.25rem]"
             >
               {proj.description}
             </p>
@@ -168,7 +168,7 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
                   transform: isHovered ? 'translateZ(10px)' : 'translateZ(0px)',
                   transition: 'transform 0.12s ease-out',
                 }}
-                className="mb-3 px-2.5 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 font-mono text-[10.5px] font-semibold text-slate-700 flex items-center gap-1.5"
+                className="mb-3.5 px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200/80 font-mono text-[10.5px] sm:text-[11px] font-semibold text-slate-700 flex items-center gap-1.5"
               >
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
                 <span className="truncate">{proj.impactMetrics}</span>
@@ -184,14 +184,14 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
                   : 'translateZ(0px)',
                 transition: 'transform 0.12s ease-out',
               }}
-              className="w-full h-44 rounded-2xl overflow-hidden bg-slate-900 mb-4 cursor-pointer relative group/img border border-[var(--border-color)]/70 shadow-inner"
+              className="w-full h-52 sm:h-56 lg:h-64 rounded-2xl overflow-hidden bg-slate-900 mb-5 cursor-pointer relative group/img border border-[var(--border-color)]/70 shadow-inner"
             >
               <img
                 src={proj.image}
                 alt={proj.title}
                 className="w-full h-full object-cover group-hover/img:scale-105 transition-transform duration-500 opacity-90 group-hover:opacity-100"
               />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-semibold gap-1.5 backdrop-blur-[2px]">
+              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/img:opacity-100 transition-opacity flex items-center justify-center text-white text-xs sm:text-sm font-semibold gap-1.5 backdrop-blur-[2px]">
                 <Eye className="w-4 h-4" />
                 <span>Preview Details</span>
               </div>
@@ -203,12 +203,12 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
                 transform: isHovered ? 'translateZ(10px)' : 'translateZ(0px)',
                 transition: 'transform 0.12s ease-out',
               }}
-              className="flex flex-wrap gap-1.5 mb-5"
+              className="flex flex-wrap gap-2 mb-6"
             >
               {proj.tags.map((tag, tIdx) => (
                 <span
                   key={tIdx}
-                  className="tech-tag text-[10.5px] px-2 py-0.5"
+                  className="tech-tag text-xs px-2.5 py-1 rounded-lg"
                 >
                   {tag}
                 </span>
@@ -224,25 +224,25 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
                 : 'translateZ(0px)',
               transition: 'transform 0.12s ease-out',
             }}
-            className="grid grid-cols-2 gap-2 pt-2 border-t border-[var(--border-color)]/50"
+            className="grid grid-cols-2 gap-3 pt-3 border-t border-[var(--border-color)]/50"
             onClick={(e) => e.stopPropagation()}
           >
             <a
               href={proj.liveDemo}
               target="_blank"
               rel="noreferrer"
-              className="btn-primary py-2 px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm"
+              className="btn-primary py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-sm"
             >
-              <ExternalLink className="w-3.5 h-3.5" />
+              <ExternalLink className="w-4 h-4" />
               <span>Live Demo</span>
             </a>
             <a
               href={proj.codeLink}
               target="_blank"
               rel="noreferrer"
-              className="btn-secondary py-2 px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm"
+              className="btn-secondary py-2.5 px-4 rounded-xl text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 shadow-sm"
             >
-              <GithubIcon className="w-3.5 h-3.5" />
+              <GithubIcon className="w-4 h-4" />
               <span>Code</span>
             </a>
           </div>
