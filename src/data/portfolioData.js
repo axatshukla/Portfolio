@@ -83,27 +83,27 @@ export const personalInfo = {
 
   focusAreas: [
     {
-      title: "AI ENGINEERING",
+      title: "AI / ML",
       skills: [
-        "LLM Applications & AI Agents",
-        "RAG Pipelines & Vector Search",
-        "Prompt Systems & Fine-Tuning"
+        "Data Prep & Feature Engineering",
+        "ML Models with scikit-learn",
+        "NLP, Deep Learning & LLM API"
       ]
     },
     {
-      title: "BACKEND ENGINEERING",
+      title: "SOFTWARE ENGINEERING",
       skills: [
-        "FastAPI, Node.js & Express",
-        "REST APIs & Microservices",
-        "PostgreSQL, Redis & Supabase"
+        "Java & Python Programming",
+        "DSA, OOP & Clean Code",
+        "React, Node.js & SQL"
       ]
     },
     {
-      title: "WEB ENGINEERING",
+      title: "TESTING & QA",
       skills: [
-        "React, Next.js & TypeScript",
-        "Modern UI/UX Architecture",
-        "Performance & State Design"
+        "Test Automation with pytest",
+        "API Testing: REST & Postman",
+        "CI/CD with GitHub Actions"
       ]
     }
   ],
