@@ -133,6 +133,27 @@ export const projects = [
       "Atomic sklearn Pipeline keeps training and inference preprocessing consistent.",
       "FastAPI + MLflow provide API serving and experiment tracking."
     ]
+  },
+  {
+    id: "proj-4",
+    title: "Sentiment Classifier",
+    subtitle: "Empirical comparison of classical NLP and pretrained transformers, revealing a 180× CPU inference gap while the tuned baseline achieved higher accuracy on the IMDB dataset.",
+    category: "NLP & Machine Learning",
+    description: "Empirical NLP benchmark comparing classical TF-IDF + Logistic Regression against DistilBERT for accuracy, latency, compute, and model efficiency.",
+    overview: "Benchmarked TF-IDF + Logistic Regression against DistilBERT across accuracy, F1, latency, throughput, training time, memory, and model footprint using 50,000 balanced IMDB reviews.",
+    impactMetrics: "89.68% Accuracy · 0.8968 F1 · 180× Faster · 580× Smaller · 50K Reviews",
+    image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80",
+    tags: ["Python", "Scikit-learn", "PyTorch", "DistilBERT", "NLP", "Pandas"],
+    liveDemo: "https://github.com/axatshukla",
+    codeLink: "https://github.com/axatshukla/sentiment-benchmark",
+    highlights: [
+      "89.68% accuracy and 0.8968 F1 from the classical baseline.",
+      "0.69 ms/review inference vs 124.90 ms for DistilBERT — 180.7× faster.",
+      "0.44 MB model footprint vs 255.41 MB — approximately 580× smaller.",
+      "~1,447 reviews/sec baseline throughput vs ~8 reviews/sec for DistilBERT.",
+      "Real-world error analysis covering sarcasm, negation, sentiment shifts, and ambiguity.",
+      "Reproducible CPU benchmark designed to connect model quality with compute and operational cost."
+    ]
   }
 ];
 
