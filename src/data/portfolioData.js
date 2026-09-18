@@ -85,21 +85,6 @@ export const experiences = [
 export const projects = [
   {
     id: "proj-1",
-    title: "AutoPatch AI",
-    category: "AI & Tools",
-    description: "AI-powered bug fix generator. Paste an issue or error traceback, get a validated code patch and create a GitHub PR with one click.",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=700&q=80",
-    tags: ["Python", "FastAPI", "React", "ChromaDB", "OpenAI"],
-    liveDemo: "https://github.com/axatshukla",
-    codeLink: "https://github.com/axatshukla/autopatch-ai",
-    highlights: [
-      "Automated AST parsing and error traceback diagnostics powered by LLM agents.",
-      "Vector search retrieval with ChromaDB to locate relevant source code context.",
-      "One-click GitHub API integration for generating tested patch pull requests."
-    ]
-  },
-  {
-    id: "proj-2",
     title: "Stride",
     category: "Full Stack & Systems",
     description: "High-performance sprint management & team collaboration workspace engineered with React 19, TypeScript, Express, SQLite WAL, Neon Cloud Postgres, and real email delivery.",
@@ -114,7 +99,7 @@ export const projects = [
     ]
   },
   {
-    id: "proj-3",
+    id: "proj-2",
     title: "ChurnIQ",
     subtitle: "Production-oriented customer churn prediction system achieving 0.8435 ROC-AUC and 78.9% recall on a held-out test set.",
     category: "ML & Data Science",
@@ -135,7 +120,7 @@ export const projects = [
     ]
   },
   {
-    id: "proj-4",
+    id: "proj-3",
     title: "Sentiment Classifier",
     subtitle: "Empirical comparison of classical NLP and pretrained transformers, revealing a 180× CPU inference gap while the tuned baseline achieved higher accuracy on the IMDB dataset.",
     category: "NLP & Machine Learning",
