@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Briefcase, MapPin, Mail, ExternalLink, Download, Sparkles, GraduationCap } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { downloadResumePDF } from '../utils/generatePdf';
+
+function RoleRotator({ roles = ["AI Engineer", "Vibe Coder", "Student"] }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % roles.length);
+    }, 2600);
+    return () => clearInterval(interval);
+  }, [roles.length]);
+
+  return (
+    <div className="h-7 sm:h-8 flex items-center overflow-hidden animate-hero-sub">
+      <span
+        key={roles[index]}
+        className="text-lg text-slate-300 font-normal animate-role-change"
+      >
+        {roles[index]}
+      </span>
+    </div>
+  );
+}
 
 export default function HeroSection({ personalInfo, onViewResume, onCopyEmail }) {
   const handleDownload = () => {
@@ -13,20 +35,29 @@ export default function HeroSection({ personalInfo, onViewResume, onCopyEmail })
     downloadResumePDF();
   };
 
+  const roles = personalInfo.roles || ["AI Engineer", "Vibe Coder", "Student"];
+
   return (
     <div className="w-full max-w-4xl mx-auto space-y-5">
       {/* 1. Dark Top Hero Card */}
-      <div className="hero-pattern text-white rounded-3xl p-8 sm:p-10 shadow-lg relative overflow-hidden transition-all duration-300">
-        <div className="relative z-10 space-y-4">
+      <div className="hero-pattern text-white rounded-3xl p-8 sm:p-10 shadow-[0_14px_40px_rgba(0,0,0,0.2)] border border-white/10 relative overflow-hidden transition-all duration-300">
+        {/* Diagonal Ambient Light Ray Effect */}
+        <div className="absolute -top-32 -right-16 w-[700px] h-[340px] bg-gradient-to-r from-transparent via-white/[0.15] to-transparent rotate-[-34deg] pointer-events-none blur-2xl transform" />
+        
+        {/* Soft Secondary Ambient Glow */}
+        <div className="absolute top-0 right-1/4 w-80 h-44 bg-sky-400/[0.07] rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 space-y-3 sm:space-y-4">
           <h1
             key={personalInfo.name}
             className="text-4xl sm:text-5xl font-bold tracking-tight text-white animate-hero-name select-none"
           >
             {personalInfo.name}
           </h1>
-          <p className="text-lg text-slate-300 font-normal animate-hero-sub">
-            {personalInfo.title}
-          </p>
+          
+          {/* Rotating Role Text */}
+          <RoleRotator roles={roles} />
+          
           
           {/* Metadata badges row */}
           <div className="pt-2 flex flex-wrap items-center gap-y-2 gap-x-5 text-xs sm:text-sm font-mono text-slate-300/90 animate-hero-meta">

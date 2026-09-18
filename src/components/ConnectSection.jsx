@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Mail, Send, Check, Copy, ExternalLink, Sparkles, MessageSquare } from 'lucide-react';
+import { Mail, Send, Check, Copy, ExternalLink, Sparkles, MessageSquare, Loader2, AlertCircle } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import SectionHeader from './SectionHeader';
 
 export default function ConnectSection({ personalInfo, onCopyEmail }) {
   const [copied, setCopied] = useState(false);
   const [formSent, setFormSent] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   const handleCopy = () => {
@@ -14,18 +16,87 @@ export default function ConnectSection({ personalInfo, onCopyEmail }) {
     setTimeout(() => setCopied(false), 2500);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    confetti({
-      particleCount: 60,
-      spread: 70,
-      origin: { y: 0.7 }
-    });
-    setFormSent(true);
-    setTimeout(() => {
-      setFormSent(false);
-      setFormData({ name: '', email: '', message: '' });
-    }, 4000);
+    setIsSubmitting(true);
+    setErrorMessage('');
+
+    try {
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || personalInfo.web3FormsAccessKey;
+
+      if (accessKey && accessKey.trim().length > 0) {
+        // Send directly via Web3Forms API
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: accessKey.trim(),
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+            subject: `Portfolio Dispatch from ${formData.name}`,
+            from_name: formData.name,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          confetti({
+            particleCount: 60,
+            spread: 70,
+            origin: { y: 0.7 }
+          });
+          setFormSent(true);
+          setTimeout(() => {
+            setFormSent(false);
+            setFormData({ name: '', email: '', message: '' });
+          }, 5000);
+        } else {
+          setErrorMessage(result.message || 'Error sending message. Opening your mail client as backup...');
+          // Trigger mailto backup
+          setTimeout(() => {
+            window.location.href = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
+              `Portfolio Dispatch from ${formData.name}`
+            )}&body=${encodeURIComponent(
+              `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+            )}`;
+          }, 800);
+        }
+      } else {
+        // Direct pre-filled mail client trigger if no access key configured yet
+        window.location.href = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
+          `Portfolio Dispatch from ${formData.name}`
+        )}&body=${encodeURIComponent(
+          `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+        )}`;
+
+        confetti({
+          particleCount: 60,
+          spread: 70,
+          origin: { y: 0.7 }
+        });
+        setFormSent(true);
+        setTimeout(() => {
+          setFormSent(false);
+          setFormData({ name: '', email: '', message: '' });
+        }, 5000);
+      }
+    } catch (err) {
+      setErrorMessage('Network error. Launching your email client as fallback...');
+      setTimeout(() => {
+        window.location.href = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
+          `Portfolio Dispatch from ${formData.name}`
+        )}&body=${encodeURIComponent(
+          `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+        )}`;
+      }, 800);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -108,22 +179,29 @@ export default function ConnectSection({ personalInfo, onCopyEmail }) {
                 {formSent ? (
                   <div className="bg-emerald-50 border border-emerald-200 text-emerald-800 p-6 rounded-2xl text-center space-y-2 animate-fadeIn my-8">
                     <Sparkles className="w-8 h-8 mx-auto text-emerald-600" />
-                    <h4 className="font-bold text-sm">Message Sent Successfully!</h4>
+                    <h4 className="font-bold text-sm">Message Dispatched!</h4>
                     <p className="text-xs text-emerald-700">
                       Thanks for reaching out! Akshat will reply to your message shortly at {formData.email || 'your email'}.
                     </p>
                   </div>
                 ) : (
                   <form onSubmit={handleSubmit} className="space-y-4">
+                    {errorMessage && (
+                      <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 rounded-xl text-xs flex items-center gap-2">
+                        <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
+                        <span>{errorMessage}</span>
+                      </div>
+                    )}
                     <div>
                       <label className="block text-xs font-mono text-[var(--text-secondary)] mb-1">Your Name</label>
                       <input
                         type="text"
                         required
+                        disabled={isSubmitting}
                         value={formData.name}
                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                         placeholder="e.g. Alex Morgan"
-                        className="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-[var(--border-color)] focus:outline-none focus:border-[var(--accent-color)] bg-[var(--bg-primary)]/40"
+                        className="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-[var(--border-color)] focus:outline-none focus:border-[var(--accent-color)] bg-[var(--bg-primary)]/40 disabled:opacity-50"
                       />
                     </div>
                     <div>
@@ -131,10 +209,11 @@ export default function ConnectSection({ personalInfo, onCopyEmail }) {
                       <input
                         type="email"
                         required
+                        disabled={isSubmitting}
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder="e.g. alex@example.com"
-                        className="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-[var(--border-color)] focus:outline-none focus:border-[var(--accent-color)] bg-[var(--bg-primary)]/40"
+                        className="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-[var(--border-color)] focus:outline-none focus:border-[var(--accent-color)] bg-[var(--bg-primary)]/40 disabled:opacity-50"
                       />
                     </div>
                     <div>
@@ -142,18 +221,29 @@ export default function ConnectSection({ personalInfo, onCopyEmail }) {
                       <textarea
                         required
                         rows={3}
+                        disabled={isSubmitting}
                         value={formData.message}
                         onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                         placeholder="Hello Akshat, I'd like to talk about..."
-                        className="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-[var(--border-color)] focus:outline-none focus:border-[var(--accent-color)] bg-[var(--bg-primary)]/40 resize-none"
+                        className="w-full text-xs sm:text-sm px-3.5 py-2.5 rounded-xl border border-[var(--border-color)] focus:outline-none focus:border-[var(--accent-color)] bg-[var(--bg-primary)]/40 resize-none disabled:opacity-50"
                       />
                     </div>
                     <button
                       type="submit"
-                      className="w-full btn-primary py-3 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2"
+                      disabled={isSubmitting}
+                      className="w-full btn-primary py-3 px-4 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 disabled:opacity-75 cursor-pointer"
                     >
-                      <Send className="w-3.5 h-3.5" />
-                      <span>Send Message</span>
+                      {isSubmitting ? (
+                        <>
+                          <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                          <span>Dispatching...</span>
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-3.5 h-3.5" />
+                          <span>Send Message</span>
+                        </>
+                      )}
                     </button>
                   </form>
                 )}

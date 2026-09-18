@@ -104,16 +104,24 @@ export default function ResumeModal({ isOpen, onClose, personalInfo, experiences
                     </div>
                     <span className="text-xs font-mono text-[var(--text-secondary)]">{exp.period}</span>
                   </div>
-                  {exp.projects.map((p, pIdx) => (
-                    <div key={pIdx} className="text-xs text-[var(--text-secondary)] pl-2">
-                      <p className="font-semibold text-[var(--text-primary)]">{p.title}</p>
-                      <ul className="list-disc pl-4 space-y-1 mt-1">
-                        {p.bullets.map((b, bIdx) => (
-                          <li key={bIdx}>{b}</li>
-                        ))}
-                      </ul>
-                    </div>
-                  ))}
+                  {exp.bullets ? (
+                    <ul className="list-disc pl-4 space-y-1.5 text-xs text-[var(--text-secondary)]">
+                      {exp.bullets.map((b, bIdx) => (
+                        <li key={bIdx} className="leading-relaxed">{b}</li>
+                      ))}
+                    </ul>
+                  ) : (
+                    exp.projects?.map((p, pIdx) => (
+                      <div key={pIdx} className="text-xs text-[var(--text-secondary)] pl-2">
+                        <p className="font-semibold text-[var(--text-primary)]">{p.title}</p>
+                        <ul className="list-disc pl-4 space-y-1 mt-1">
+                          {p.bullets.map((b, bIdx) => (
+                            <li key={bIdx}>{b}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))
+                  )}
                 </div>
               ))}
             </div>

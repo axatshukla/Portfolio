@@ -46,9 +46,10 @@ body {
 /* Hero dark grid / dot matrix background */
 .hero-pattern {
   background-color: #1b263b;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 20px 20px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.13) 1px, transparent 1px);
+  background-size: 22px 22px;
 }
+
 
 /* Subtle card styling */
 .clean-card {
@@ -208,6 +209,27 @@ body {
   opacity: 0;
   animation: heroSubAnimation 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.48s forwards;
 }
+
+@keyframes roleSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+    filter: blur(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+.animate-role-change {
+  display: inline-block;
+  will-change: transform, opacity, filter;
+  animation: roleSlideIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+
 
 
 

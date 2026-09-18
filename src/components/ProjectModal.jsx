@@ -52,18 +52,16 @@ export default function ProjectModal({ project, onClose }) {
               Key Features & Architectural Highlights
             </h3>
             <ul className="space-y-1.5 text-xs text-[var(--text-secondary)]">
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                <span>Responsive, modern UX built with crisp typography and clean interaction states.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                <span>High-performance backend API routes with asynchronous validation and database indexes.</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                <span>Thoroughly documented codebase with CI/CD integration and unit test coverage.</span>
-              </li>
+              {(project.highlights || [
+                "Responsive, modern UX built with crisp typography and clean interaction states.",
+                "High-performance backend API routes with asynchronous validation and database indexes.",
+                "Thoroughly documented codebase with CI/CD integration and unit test coverage."
+              ]).map((highlight, hIdx) => (
+                <li key={hIdx} className="flex items-start gap-2">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                  <span>{highlight}</span>
+                </li>
+              ))}
             </ul>
           </div>
 

@@ -1,10 +1,12 @@
 export const personalInfo = {
   name: "Akshat Shukla",
-  title: "AI & Full-Stack Developer",
+  title: "AI Engineer",
+  roles: ["AI Engineer", "Vibe Coder", "Student"],
   role: "Student & Software Developer",
   statusBadge: "Computer Science Undergraduate",
   location: "India",
   email: "aksh4tshukla@gmail.com",
+  web3FormsAccessKey: "ebb0fc58-94e4-4440-90ad-15b10e485a8f",
   aboutHeading: "I build scalable, intelligent applications across full stack & AI systems.",
   aboutDescription: "What began as a fascination with computer systems evolved into a focused drive for crafting high-impact software. Currently pursuing my degree, I specialize in building full-stack platforms, autonomous AI agents, and intuitive developer tooling that solve real-world problems.",
   avatarUrl: "/profile.png",
@@ -47,84 +49,36 @@ export const personalInfo = {
 export const experiences = [
   {
     id: "exp-1",
-    role: "Software Engineering Intern",
-    company: "Apex Tech Labs",
-    companyLogo: "⚡",
-    status: "CURRENT",
-    period: "Jan 2025 – Present",
-    location: "Remote, India",
-    type: "Internship",
-    projects: [
-      {
-        code: "01",
-        title: "Intelligent Developer Assistant & RAG Engine",
-        bullets: [
-          "Architected and deployed an internal code search and RAG engine indexing 50k+ repository files, reducing dev onboarding query time by 45%.",
-          "Implemented semantic chunking, hybrid vector/keyword search with ChromaDB, and context reranking for high recall.",
-          "Integrated automated CI/CD pipeline triggers and telemetry logging for system health."
-        ]
-      },
-      {
-        code: "02",
-        title: "FastAPI Microservices & API Gateway",
-        bullets: [
-          "Developed high-throughput async microservices handling authentication, rate limiting, and structured JSON payloads.",
-          "Optimized Postgres query patterns with indexing and connection pooling, shaving p95 latency to under 35ms.",
-          "Configured containerized Docker instances and automated deployment scripts."
-        ]
-      }
-    ],
-    tags: ["React", "FastAPI", "TypeScript", "Python", "ChromaDB", "Docker", "PostgreSQL"]
-  },
-  {
-    id: "exp-2",
-    role: "Full Stack Developer",
-    company: "Campus Spark Studio",
-    companyLogo: "🚀",
+    role: "Artificial Intelligence Intern",
+    company: "Codec Technologies",
+    companyLogo: "/codec-technologies.png",
     status: "COMPLETED",
-    period: "May 2024 – Dec 2024",
-    location: "Campus / Remote",
-    type: "Part-time",
+    period: "Feb 2026 - Mar 2026",
+    location: "Hybrid, India",
+    type: "Internship",
+    bullets: [
+      "Gained hands-on experience with Python, data analysis, and machine learning, AI/ML Workflow, working with real-world financial time-series data.",
+      "Learned and applied feature engineering, regression, model training, and evaluation using Linear Regression, Ridge Regression, and Random Forest.",
+      "Built and tested an interactive Stock Price Predictor with a Streamlit dashboard, implementing data collection, preprocessing, visualization, model comparison, and next-day prediction."
+    ],
     projects: [
       {
         code: "01",
-        title: "Student Collaboration & Resource Portal",
+        title: "AI/ML Workflow & Financial Time-Series Modeling",
         bullets: [
-          "Built a reactive MERN stack web app serving 3,000+ active university students for course resources and project team matching.",
-          "Integrated real-time notification socket feeds and file storage with Amazon S3.",
-          "Created modular reusable UI component library using Tailwind CSS and Radix primitives."
+          "Gained hands-on experience with Python, data analysis, and machine learning, AI/ML Workflow, working with real-world financial time-series data.",
+          "Learned and applied feature engineering, regression, model training, and evaluation using Linear Regression, Ridge Regression, and Random Forest."
         ]
       },
       {
         code: "02",
-        title: "Database Performance & Query Optimization",
+        title: "Interactive Stock Price Predictor Dashboard",
         bullets: [
-          "Refactored complex MongoDB aggregations and implemented Redis cache layers, accelerating page load speeds by 3x."
+          "Built and tested an interactive Stock Price Predictor with a Streamlit dashboard, implementing data collection, preprocessing, visualization, model comparison, and next-day prediction."
         ]
       }
     ],
-    tags: ["React", "Node.js", "Express", "MongoDB", "Redis", "Tailwind CSS", "REST APIs"]
-  },
-  {
-    id: "exp-3",
-    role: "Undergraduate Research Trainee",
-    company: "Department of Computer Science",
-    companyLogo: "🎓",
-    status: "ACADEMIC",
-    period: "Aug 2023 – Apr 2024",
-    location: "University Campus",
-    type: "Research",
-    projects: [
-      {
-        code: "01",
-        title: "Data Pipelines & Neural Network Benchmarking",
-        bullets: [
-          "Gained hands-on expertise in structured data extraction, preprocessing, and statistical evaluation with Python (NumPy, Pandas, PyTorch).",
-          "Benchmarked multi-modal embeddings across text and image datasets for semantic retrieval benchmarks."
-        ]
-      }
-    ],
-    tags: ["Python", "PyTorch", "Data Science", "PostgreSQL", "Algorithms"]
+    tags: ["Python", "Machine Learning", "Data Analysis", "Scikit-learn", "Streamlit"]
   }
 ];
 
@@ -137,79 +91,30 @@ export const projects = [
     image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=700&q=80",
     tags: ["Python", "FastAPI", "React", "ChromaDB", "OpenAI"],
     liveDemo: "https://github.com/axatshukla",
-    codeLink: "https://github.com/axatshukla/autopatch-ai"
+    codeLink: "https://github.com/axatshukla/autopatch-ai",
+    highlights: [
+      "Automated AST parsing and error traceback diagnostics powered by LLM agents.",
+      "Vector search retrieval with ChromaDB to locate relevant source code context.",
+      "One-click GitHub API integration for generating tested patch pull requests."
+    ]
   },
   {
     id: "proj-2",
-    title: "ZenKit-UI",
-    category: "Frontend",
-    description: "Modern, ultra-minimal React component library with built-in accessibility, fluid physics transitions, and copy-paste code snippets.",
+    title: "Stride",
+    category: "Full Stack & Systems",
+    description: "High-performance sprint management & team collaboration workspace engineered with React 19, TypeScript, Express, SQLite WAL, Neon Cloud Postgres, and real email delivery.",
     image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=700&q=80",
-    tags: ["React", "Tailwind CSS", "TypeScript", "Vite"],
-    liveDemo: "https://github.com/axatshukla",
-    codeLink: "https://github.com/axatshukla/zenkit-ui"
-  },
-  {
-    id: "proj-3",
-    title: "DevChronicle Publishing",
-    category: "Full Stack",
-    description: "Full-featured technical publication platform inspired by Medium. Supports Markdown, real-time collaboration, and community interactions.",
-    image: "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=700&q=80",
-    tags: ["React", "Node.js", "MongoDB", "Express", "JWT"],
-    liveDemo: "https://github.com/axatshukla",
-    codeLink: "https://github.com/axatshukla/devchronicle"
-  },
-  {
-    id: "proj-4",
-    title: "Rick & Morty Vault",
-    category: "Web & API",
-    description: "Interactive themed collector experience with character filters, live dimension exploration, audio soundboards, and cart checkout simulation.",
-    image: "https://images.unsplash.com/photo-1563089145-599997674d42?auto=format&fit=crop&w=700&q=80",
-    tags: ["HTML5", "CSS3", "JavaScript", "REST APIs"],
-    liveDemo: "https://github.com/axatshukla",
-    codeLink: "https://github.com/axatshukla/rick-morty-vault"
-  },
-  {
-    id: "proj-5",
-    title: "SweetSpot Artisan",
-    category: "Frontend",
-    description: "Gourmet confectionery storefront featuring 3D product rotates, ingredient customizer, and silky smooth micro-animations.",
-    image: "https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&w=700&q=80",
-    tags: ["React", "Tailwind CSS", "Framer Motion"],
-    liveDemo: "https://github.com/axatshukla",
-    codeLink: "https://github.com/axatshukla/sweetspot"
-  },
-  {
-    id: "proj-6",
-    title: "SummitHaven Escapes",
-    category: "Full Stack",
-    description: "Comprehensive vacation rental reservation platform with date range pricing, interactive map clustering, and instant host messaging.",
-    image: "https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=700&q=80",
-    tags: ["MongoDB", "Express", "React", "Node.js", "Mapbox"],
-    liveDemo: "https://github.com/axatshukla",
-    codeLink: "https://github.com/axatshukla/summithaven"
-  },
-  {
-    id: "proj-7",
-    title: "VibeWave Audio",
-    category: "Web & Audio",
-    description: "Aesthetic browser audio station replicating Spotify's fluid player with web audio equalizer, custom playlist curation, and lyrics syncing.",
-    image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=700&q=80",
-    tags: ["HTML5", "CSS3", "JavaScript", "Web Audio API"],
-    liveDemo: "https://github.com/axatshukla",
-    codeLink: "https://github.com/axatshukla/vibewave"
-  },
-  {
-    id: "proj-8",
-    title: "CampusSphere Radar",
-    category: "Mobile & Web",
-    description: "Real-time navigation and event locator for university campuses with turn-by-turn routing, venue occupancy meters, and indoor maps.",
-    image: "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=700&q=80",
-    tags: ["React", "Geolocation API", "Tailwind CSS", "Node.js"],
-    liveDemo: "https://github.com/axatshukla",
-    codeLink: "https://github.com/axatshukla/campussphere"
+    tags: ["React 19", "TypeScript", "Node.js", "Express", "PostgreSQL", "SQLite"],
+    liveDemo: "https://strideeee.netlify.app/",
+    codeLink: "https://github.com/axatshukla/Stride",
+    highlights: [
+      "Multi-tenant team workspaces with strict data isolation, RBAC permissions, and instant cache hydration.",
+      "Interactive Kanban board, sprint velocity analytics, structured task tables, and calendar deadline tracking.",
+      "Dual database architecture (SQLite WAL + Neon Cloud Postgres) and real-life email dispatch via Gmail SMTP & Resend."
+    ]
   }
 ];
+
 
 export const skillCategories = [
   {

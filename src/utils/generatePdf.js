@@ -141,22 +141,33 @@ export function downloadResumePDF() {
     doc.text(`${exp.period} | ${exp.location}`, pageWidth - leftMargin - 45, y);
     y += 4.5;
 
-    exp.projects.forEach((proj) => {
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(8.5);
-      doc.setTextColor(...darkColor);
-      doc.text(`• ${proj.title}`, leftMargin + 3, y);
-      y += 4;
-
-      proj.bullets.forEach((bullet) => {
+    if (exp.bullets) {
+      exp.bullets.forEach((bullet) => {
         doc.setFont('helvetica', 'normal');
         doc.setFontSize(8);
         doc.setTextColor(60, 60, 60);
-        const bLines = doc.splitTextToSize(`- ${bullet}`, contentWidth - 8);
-        doc.text(bLines, leftMargin + 6, y);
-        y += bLines.length * 3.6;
+        const bLines = doc.splitTextToSize(`• ${bullet}`, contentWidth - 4);
+        doc.text(bLines, leftMargin + 3, y);
+        y += bLines.length * 3.6 + 1;
       });
-    });
+    } else if (exp.projects) {
+      exp.projects.forEach((proj) => {
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(8.5);
+        doc.setTextColor(...darkColor);
+        doc.text(`• ${proj.title}`, leftMargin + 3, y);
+        y += 4;
+
+        proj.bullets.forEach((bullet) => {
+          doc.setFont('helvetica', 'normal');
+          doc.setFontSize(8);
+          doc.setTextColor(60, 60, 60);
+          const bLines = doc.splitTextToSize(`- ${bullet}`, contentWidth - 8);
+          doc.text(bLines, leftMargin + 6, y);
+          y += bLines.length * 3.6;
+        });
+      });
+    }
     y += 2;
   });
 
