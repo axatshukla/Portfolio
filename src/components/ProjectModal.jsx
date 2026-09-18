@@ -1,5 +1,6 @@
 import React from 'react';
-import { X, ExternalLink, Code2, CheckCircle2 } from 'lucide-react';
+import { X, ExternalLink, CheckCircle2 } from 'lucide-react';
+import GithubIcon from './GithubIcon';
 
 export default function ProjectModal({ project, onClose }) {
   if (!project) return null;
@@ -88,7 +89,7 @@ export default function ProjectModal({ project, onClose }) {
             rel="noreferrer"
             className="btn-secondary px-4 py-2.5 rounded-xl text-xs font-semibold flex items-center gap-1.5"
           >
-            <Code2 className="w-3.5 h-3.5" />
+            <GithubIcon className="w-3.5 h-3.5" />
             <span>View Source Code</span>
           </a>
           <a

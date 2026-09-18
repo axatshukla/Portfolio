@@ -1,5 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
-import { ExternalLink, Code2, Eye } from 'lucide-react';
+import { ExternalLink, Eye } from 'lucide-react';
+import GithubIcon from './GithubIcon';
 
 export default function ProjectCard3D({ proj, onSelectProject }) {
   const cardRef = useRef(null);
@@ -227,7 +228,7 @@ export default function ProjectCard3D({ proj, onSelectProject }) {
               rel="noreferrer"
               className="btn-secondary py-2 px-3 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 shadow-sm"
             >
-              <Code2 className="w-3.5 h-3.5" />
+              <GithubIcon className="w-3.5 h-3.5" />
               <span>Code</span>
             </a>
           </div>
