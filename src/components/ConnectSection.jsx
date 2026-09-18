@@ -8,6 +8,7 @@ export default function ConnectSection({ personalInfo, onCopyEmail }) {
   const [formSent, setFormSent] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [showDirectOptions, setShowDirectOptions] = useState(false);
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   const handleCopy = () => {
@@ -20,84 +21,104 @@ export default function ConnectSection({ personalInfo, onCopyEmail }) {
     e.preventDefault();
     setIsSubmitting(true);
     setErrorMessage('');
+    setShowDirectOptions(false);
 
-    try {
-      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || personalInfo.web3FormsAccessKey;
+    let sentSuccessfully = false;
+    const isLocalhost = Boolean(
+      window.location.hostname === 'localhost' ||
+      window.location.hostname === '127.0.0.1' ||
+      window.location.hostname === ''
+    );
 
-      if (accessKey && accessKey.trim().length > 0) {
-        // Send directly via Web3Forms API
-        const response = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify({
-            access_key: accessKey.trim(),
-            name: formData.name,
-            email: formData.email,
-            message: formData.message,
-            subject: `Portfolio Dispatch from ${formData.name}`,
-            from_name: formData.name,
-          }),
+    const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || personalInfo.web3FormsAccessKey;
+
+    // Strategy 1: If hosted on Netlify (or production), submit via native Netlify Forms
+    if (!isLocalhost) {
+      try {
+        const netlifyParams = new URLSearchParams({
+          'form-name': 'dispatch',
+          name: formData.name,
+          email: formData.email,
+          message: formData.message,
         });
 
-        const result = await response.json();
+        const netlifyResponse = await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: netlifyParams.toString(),
+        });
 
-        if (result.success) {
-          confetti({
-            particleCount: 60,
-            spread: 70,
-            origin: { y: 0.7 }
-          });
-          setFormSent(true);
-          setTimeout(() => {
-            setFormSent(false);
-            setFormData({ name: '', email: '', message: '' });
-          }, 5000);
-        } else {
-          setErrorMessage(result.message || 'Error sending message. Opening your mail client as backup...');
-          // Trigger mailto backup
-          setTimeout(() => {
-            window.location.href = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
-              `Portfolio Dispatch from ${formData.name}`
-            )}&body=${encodeURIComponent(
-              `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-            )}`;
-          }, 800);
+        if (netlifyResponse.ok) {
+          sentSuccessfully = true;
         }
-      } else {
-        // Direct pre-filled mail client trigger if no access key configured yet
-        window.location.href = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
-          `Portfolio Dispatch from ${formData.name}`
-        )}&body=${encodeURIComponent(
-          `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-        )}`;
-
-        confetti({
-          particleCount: 60,
-          spread: 70,
-          origin: { y: 0.7 }
-        });
-        setFormSent(true);
-        setTimeout(() => {
-          setFormSent(false);
-          setFormData({ name: '', email: '', message: '' });
-        }, 5000);
+      } catch (err) {
+        console.warn('Netlify form submission note:', err);
       }
-    } catch (err) {
-      setErrorMessage('Network error. Launching your email client as fallback...');
-      setTimeout(() => {
-        window.location.href = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
-          `Portfolio Dispatch from ${formData.name}`
-        )}&body=${encodeURIComponent(
-          `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
-        )}`;
-      }, 800);
-    } finally {
-      setIsSubmitting(false);
     }
+
+    // Strategy 2: Web3Forms submission (via FormData, avoiding JSON CORS preflight issues)
+    if (!sentSuccessfully && accessKey && accessKey.trim().length > 0) {
+      try {
+        const web3Data = new FormData();
+        web3Data.append('access_key', accessKey.trim());
+        web3Data.append('name', formData.name);
+        web3Data.append('email', formData.email);
+        web3Data.append('message', formData.message);
+        web3Data.append('subject', `Portfolio Dispatch from ${formData.name}`);
+        web3Data.append('from_name', formData.name);
+
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          body: web3Data,
+        });
+
+        if (response.ok) {
+          const result = await response.json().catch(() => ({ success: true }));
+          if (result.success) {
+            sentSuccessfully = true;
+          }
+        }
+      } catch (err) {
+        console.warn('Web3Forms submission note:', err);
+      }
+    }
+
+    // Strategy 3: Localhost development testing support
+    if (!sentSuccessfully && isLocalhost) {
+      console.info('Local development: Dispatch recorded successfully in console:', formData);
+      sentSuccessfully = true;
+    }
+
+    if (sentSuccessfully) {
+      confetti({
+        particleCount: 60,
+        spread: 70,
+        origin: { y: 0.7 },
+      });
+      setFormSent(true);
+      setTimeout(() => {
+        setFormSent(false);
+        setFormData({ name: '', email: '', message: '' });
+      }, 5000);
+    } else {
+      setErrorMessage('Unable to dispatch automatically right now. You can send it directly with one click below:');
+      setShowDirectOptions(true);
+    }
+
+    setIsSubmitting(false);
   };
+
+  const gmailComposeUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${encodeURIComponent(
+    personalInfo.email
+  )}&su=${encodeURIComponent(`Portfolio Dispatch from ${formData.name || 'Visitor'}`)}&body=${encodeURIComponent(
+    `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+  )}`;
+
+  const mailtoUrl = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
+    `Portfolio Dispatch from ${formData.name || 'Visitor'}`
+  )}&body=${encodeURIComponent(
+    `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`
+  )}`;
 
   return (
     <div className="w-full">
@@ -185,17 +206,53 @@ export default function ConnectSection({ personalInfo, onCopyEmail }) {
                     </p>
                   </div>
                 ) : (
-                  <form onSubmit={handleSubmit} className="space-y-4">
+                  <form
+                    name="dispatch"
+                    method="POST"
+                    data-netlify="true"
+                    netlify-honeypot="bot-field"
+                    onSubmit={handleSubmit}
+                    className="space-y-4"
+                  >
+                    {/* Netlify form detection hidden inputs */}
+                    <input type="hidden" name="form-name" value="dispatch" />
+                    <div className="hidden">
+                      <input name="bot-field" tabIndex="-1" autoComplete="off" />
+                    </div>
+
                     {errorMessage && (
-                      <div className="p-3 bg-rose-50 border border-rose-200 text-rose-700 rounded-xl text-xs flex items-center gap-2">
-                        <AlertCircle className="w-4 h-4 shrink-0 text-rose-600" />
-                        <span>{errorMessage}</span>
+                      <div className="p-3 bg-amber-50 border border-amber-200 text-amber-900 rounded-xl text-xs space-y-2">
+                        <div className="flex items-center gap-2">
+                          <AlertCircle className="w-4 h-4 shrink-0 text-amber-600" />
+                          <span className="font-medium">{errorMessage}</span>
+                        </div>
+                        {showDirectOptions && (
+                          <div className="flex flex-wrap gap-2 pt-1">
+                            <a
+                              href={gmailComposeUrl}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="px-3 py-1.5 bg-white border border-amber-300 rounded-lg text-[11px] font-semibold text-amber-900 hover:bg-amber-100/60 flex items-center gap-1.5 transition-colors"
+                            >
+                              <Mail className="w-3.5 h-3.5 text-amber-700" />
+                              <span>Open in Gmail</span>
+                            </a>
+                            <a
+                              href={mailtoUrl}
+                              className="px-3 py-1.5 bg-white border border-amber-300 rounded-lg text-[11px] font-semibold text-amber-900 hover:bg-amber-100/60 flex items-center gap-1.5 transition-colors"
+                            >
+                              <span>Default Mail App</span>
+                            </a>
+                          </div>
+                        )}
                       </div>
                     )}
+
                     <div>
                       <label className="block text-xs font-mono text-[var(--text-secondary)] mb-1">Your Name</label>
                       <input
                         type="text"
+                        name="name"
                         required
                         disabled={isSubmitting}
                         value={formData.name}
@@ -208,6 +265,7 @@ export default function ConnectSection({ personalInfo, onCopyEmail }) {
                       <label className="block text-xs font-mono text-[var(--text-secondary)] mb-1">Your Email</label>
                       <input
                         type="email"
+                        name="email"
                         required
                         disabled={isSubmitting}
                         value={formData.email}
@@ -220,6 +278,7 @@ export default function ConnectSection({ personalInfo, onCopyEmail }) {
                       <label className="block text-xs font-mono text-[var(--text-secondary)] mb-1">Message</label>
                       <textarea
                         required
+                        name="message"
                         rows={3}
                         disabled={isSubmitting}
                         value={formData.message}

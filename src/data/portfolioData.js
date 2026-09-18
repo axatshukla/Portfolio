@@ -10,7 +10,7 @@ export const personalInfo = {
   aboutHeading: "I build scalable, intelligent applications across full stack & AI systems.",
   aboutDescription: "What began as a fascination with computer systems evolved into a focused drive for crafting high-impact software. Currently pursuing my degree, I specialize in building full-stack platforms, autonomous AI agents, and intuitive developer tooling that solve real-world problems.",
   avatarUrl: "/profile.png",
-  
+
   focusAreas: [
     {
       title: "AI ENGINEERING",
