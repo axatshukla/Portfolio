@@ -2,14 +2,84 @@ export const personalInfo = {
   name: "Akshat Shukla",
   title: "AI Engineer",
   roles: ["AI Engineer", "Vibe Coder", "Student"],
-  role: "Student & Software Developer",
-  statusBadge: "Computer Science Undergraduate",
-  location: "India",
+  role: "Computer Engineering Undergraduate",
+  statusBadge: "Computer Engineering Undergraduate",
+  location: "Pune, India",
+  phone: "+91 8830189542",
   email: "aksh4tshukla@gmail.com",
+  github: "https://github.com/axatshukla",
+  linkedin: "https://www.linkedin.com/in/akshatshuklaa/",
+  resumeUrl: "/Akshat_Shukla_Resume.pdf",
   web3FormsAccessKey: "ebb0fc58-94e4-4440-90ad-15b10e485a8f",
   aboutHeading: "I build scalable, intelligent applications across full stack & AI systems.",
   aboutDescription: "What began as a fascination with computer systems evolved into a focused drive for crafting high-impact software. Currently pursuing my degree, I specialize in building full-stack platforms, autonomous AI agents, and intuitive developer tooling that solve real-world problems.",
   avatarUrl: "/profile.png",
+
+  objective: "Computer Engineering undergraduate with hands-on experience building end-to-end machine learning and NLP systems using Python, scikit-learn, TensorFlow, PyTorch, and Hugging Face. Experienced in data preprocessing, feature engineering, model evaluation, API deployment, Docker, and CI/CD. Built and evaluated production-oriented ML pipelines with measurable performance improvements and automated testing.",
+
+  education: {
+    institution: "Sinhgad College of Engineering",
+    degree: "B.E. in Computer Engineering",
+    location: "Pune, India",
+    period: "Expected 2027",
+    cgpa: "8.5 / 10"
+  },
+
+  certifications: [
+    {
+      name: "freeCodeCamp — Machine Learning with Python",
+      issuer: "freeCodeCamp",
+      badge: "Verified Certificate"
+    }
+  ],
+
+  resumeSkills: [
+    {
+      category: "Languages",
+      skills: ["Python", "Java", "SQL", "C++", "JavaScript"]
+    },
+    {
+      category: "ML / Data",
+      skills: ["Scikit-learn", "Pandas", "NumPy", "Matplotlib"]
+    },
+    {
+      category: "Deep Learning / NLP",
+      skills: ["TensorFlow", "PyTorch", "Hugging Face Transformers"]
+    },
+    {
+      category: "ML Concepts",
+      skills: ["Supervised Learning", "Unsupervised Learning", "Feature Engineering", "Model Evaluation", "Cross-Validation", "NLP", "Neural Networks"]
+    },
+    {
+      category: "MLOps / Deployment",
+      skills: ["FastAPI", "Docker", "Pytest", "GitHub Actions", "Streamlit"]
+    },
+    {
+      category: "Tools",
+      skills: ["Git", "GitHub", "Linux", "Jupyter Notebook"]
+    }
+  ],
+
+  resumeProjects: [
+    {
+      title: "ChurnIQ — Customer Churn Prediction Pipeline",
+      github: "https://github.com/axatshukla/ChurnIQ",
+      bullets: [
+        "Built an end-to-end churn prediction pipeline using scikit-learn Pipeline and ColumnTransformer, covering data validation, feature engineering, and preprocessing.",
+        "Selected Random Forest (class_weight='balanced') over Logistic Regression and XGBoost via stratified 5-fold CV; achieved F1: 0.6365 and ROC-AUC: 0.8435, with threshold tuned to 0.48 for recall ≥ 0.70.",
+        "Deployed the model as a FastAPI service in Docker with Pytest-based automated tests and GitHub Actions CI."
+      ]
+    },
+    {
+      title: "Sentiment Classification — Classical ML vs. Transformer Benchmark",
+      github: "https://github.com/axatshukla/sentiment-benchmark",
+      bullets: [
+        "Benchmarked classical NLP and transformer-based approaches, comparing TF-IDF + Logistic Regression against pretrained DistilBERT for movie-review sentiment classification.",
+        "Achieved 89.68% accuracy (F1: 0.897) vs. 88.10% (F1: 0.881) for zero-shot DistilBERT, with the baseline running ~180x faster (0.69ms vs. 124.9ms) and using 580x less disk (0.44MB vs. 255MB).",
+        "Performed qualitative error analysis on negation, sarcasm, and nuanced sentiment shifts."
+      ]
+    }
+  ],
 
   focusAreas: [
     {
@@ -53,28 +123,28 @@ export const experiences = [
     company: "Codec Technologies",
     companyLogo: "/codec-technologies.png",
     status: "COMPLETED",
-    period: "Feb 2026 - Mar 2026",
-    location: "Hybrid, India",
+    period: "Feb 2026 – Mar 2026",
+    location: "Pune, India",
     type: "Internship",
     bullets: [
-      "Gained hands-on experience with Python, data analysis, and machine learning, AI/ML Workflow, working with real-world financial time-series data.",
-      "Learned and applied feature engineering, regression, model training, and evaluation using Linear Regression, Ridge Regression, and Random Forest.",
-      "Built and tested an interactive Stock Price Predictor with a Streamlit dashboard, implementing data collection, preprocessing, visualization, model comparison, and next-day prediction."
+      "Analyzed financial time-series data using Python and applied preprocessing and feature engineering techniques for ML modeling.",
+      "Trained and evaluated Linear Regression, Ridge Regression, and Random Forest models for stock-price prediction.",
+      "Developed an interactive Streamlit dashboard integrating data collection, preprocessing, visualization, model comparison, and next-day prediction."
     ],
     projects: [
       {
         code: "01",
         title: "AI/ML Workflow & Financial Time-Series Modeling",
         bullets: [
-          "Gained hands-on experience with Python, data analysis, and machine learning, AI/ML Workflow, working with real-world financial time-series data.",
-          "Learned and applied feature engineering, regression, model training, and evaluation using Linear Regression, Ridge Regression, and Random Forest."
+          "Analyzed financial time-series data using Python and applied preprocessing and feature engineering techniques for ML modeling.",
+          "Trained and evaluated Linear Regression, Ridge Regression, and Random Forest models for stock-price prediction."
         ]
       },
       {
         code: "02",
         title: "Interactive Stock Price Predictor Dashboard",
         bullets: [
-          "Built and tested an interactive Stock Price Predictor with a Streamlit dashboard, implementing data collection, preprocessing, visualization, model comparison, and next-day prediction."
+          "Developed an interactive Streamlit dashboard integrating data collection, preprocessing, visualization, model comparison, and next-day prediction."
         ]
       }
     ],
