@@ -11,8 +11,8 @@ export const personalInfo = {
   linkedin: "https://www.linkedin.com/in/akshatshuklaa/",
   resumeUrl: "/Akshat_Shukla_Resume.pdf",
   web3FormsAccessKey: "ebb0fc58-94e4-4440-90ad-15b10e485a8f",
-  aboutHeading: "I build scalable, intelligent applications across full stack & AI systems.",
-  aboutDescription: "What began as a fascination with computer systems evolved into a focused drive for crafting high-impact software. Currently pursuing my degree, I specialize in building full-stack platforms, autonomous AI agents, and intuitive developer tooling that solve real-world problems.",
+  aboutHeading: "I turn ideas into tested, intelligent software.",
+  aboutDescription: "Fascinated by how machines learn, and driven to build software people can rely on. I bring together data, models, clean code and rigorous testing to create AI that's accurate, efficient and ready for the real world.",
   avatarUrl: "/profile.png",
 
   objective: "Computer Engineering undergraduate with hands-on experience building end-to-end machine learning and NLP systems using Python, scikit-learn, TensorFlow, PyTorch, and Hugging Face. Experienced in data preprocessing, feature engineering, model evaluation, API deployment, Docker, and CI/CD. Built and evaluated production-oriented ML pipelines with measurable performance improvements and automated testing.",
