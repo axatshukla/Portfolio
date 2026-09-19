@@ -10,8 +10,8 @@ export default function ProjectsSection({ projects, onSelectProject }) {
 
       {/* Main Body Content Container - Full-width expansive layout */}
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 pt-8 sm:pt-12 pb-32 space-y-8">
-        {/* Screen-filling Projects Grid with 3D Holographic Parallax Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch">
+        {/* 3-Column Screen-filling Projects Grid with 3D Holographic Parallax Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
           {projects.map((proj) => (
             <ProjectCard3D
               key={proj.id}
