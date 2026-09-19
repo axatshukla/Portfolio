@@ -92,7 +92,7 @@ export default function ProjectModal({ project, onClose }) {
               Technologies Utilized
             </h3>
             <div className="flex flex-wrap gap-2">
-              {project.tags.map((tag, idx) => (
+              {(project.technologies || project.tags).map((tag, idx) => (
                 <span key={idx} className="tech-tag">
                   {tag}
                 </span>

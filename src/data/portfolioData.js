@@ -210,6 +210,28 @@ export const projects = [
       "Real-world error analysis covering sarcasm, negation, sentiment shifts, and ambiguity.",
       "Reproducible CPU benchmark designed to connect model quality with compute and operational cost."
     ]
+  },
+  {
+    id: "proj-4",
+    title: "Doc-RAG",
+    subtitle: "Enterprise IDP and multimodal RAG system designed to turn unstructured invoices, contracts, and receipts into grounded, auditable data.",
+    category: "AI & Document Intelligence",
+    description: "Enterprise document intelligence platform combining OCR, table extraction, hybrid RAG search, grounded visual citations, financial validation, and human-in-the-loop review.",
+    overview: "Built an end-to-end document processing pipeline supporting digital, scanned, and hybrid PDFs, combining selective OCR, table extraction, semantic chunking, hybrid retrieval, structured extraction, deterministic validation, and human review.",
+    impactMetrics: "100% Visual Traceability · 2× Retrieval Signals · 0.0–1.0 Bounding Boxes · STP + HITL",
+    image: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=700&q=80",
+    tags: ["Python", "RAG", "OCR", "FastAPI", "React", "Streamlit"],
+    technologies: ["Python", "RAG", "OCR", "PyMuPDF", "Tesseract", "BM25", "FastAPI", "React 19", "Pydantic", "Pytest"],
+    liveDemo: "https://github.com/axatshukla/Doc-RAG",
+    codeLink: "https://github.com/axatshukla/Doc-RAG",
+    highlights: [
+      "Digital + scanned + hybrid page-level document classification.",
+      "Dense vector + BM25 retrieval combined through Reciprocal Rank Fusion.",
+      "Grounded extraction with normalized 0.0–1.0 bounding-box citations for visual auditability.",
+      "Automated financial validation ensuring line-item sums reconcile with document totals.",
+      "Composite confidence scoring enables Straight-Through Processing and HITL escalation.",
+      "Interactive document viewer with RAG Q&A, visual citations, and review queue."
+    ]
   }
 ];
 
