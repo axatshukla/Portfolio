@@ -62,8 +62,8 @@ export const personalInfo = {
 
   resumeProjects: [
     {
-      title: "ChurnIQ — Customer Churn Prediction Pipeline",
-      github: "https://github.com/axatshukla/ChurnIQ",
+      title: "Churn-Predictor — Customer Churn Prediction Pipeline",
+      github: "https://github.com/axatshukla/Churn-Predictor",
       bullets: [
         "Built an end-to-end churn prediction pipeline using scikit-learn Pipeline and ColumnTransformer, covering data validation, feature engineering, and preprocessing.",
         "Selected Random Forest (class_weight='balanced') over Logistic Regression and XGBoost via stratified 5-fold CV; achieved F1: 0.6365 and ROC-AUC: 0.8435, with threshold tuned to 0.48 for recall ≥ 0.70.",
@@ -72,7 +72,7 @@ export const personalInfo = {
     },
     {
       title: "Sentiment Classification — Classical ML vs. Transformer Benchmark",
-      github: "https://github.com/axatshukla/sentiment-benchmark",
+      github: "https://github.com/axatshukla/Sentiment-Classifier",
       bullets: [
         "Benchmarked classical NLP and transformer-based approaches, comparing TF-IDF + Logistic Regression against pretrained DistilBERT for movie-review sentiment classification.",
         "Achieved 89.68% accuracy (F1: 0.897) vs. 88.10% (F1: 0.881) for zero-shot DistilBERT, with the baseline running ~180x faster (0.69ms vs. 124.9ms) and using 580x less disk (0.44MB vs. 255MB).",
@@ -179,8 +179,8 @@ export const projects = [
     impactMetrics: "0.8435 ROC-AUC · 78.9% Recall · 63.7% F1 · 7,043 Customers · 19 Tests",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=700&q=80",
     tags: ["Python", "Scikit-learn", "FastAPI", "XGBoost", "MLflow"],
-    liveDemo: "https://github.com/axatshukla/ChurnIQ",
-    codeLink: "https://github.com/axatshukla/ChurnIQ",
+    liveDemo: "https://github.com/axatshukla/Churn-Predictor",
+    codeLink: "https://github.com/axatshukla/Churn-Predictor",
     highlights: [
       "0.8435 ROC-AUC and 0.6365 F1 on 1,409 unseen test records.",
       "78.88% recall with an optimized 0.48 decision threshold.",
@@ -200,8 +200,8 @@ export const projects = [
     impactMetrics: "89.68% Accuracy · 0.8968 F1 · 180× Faster · 580× Smaller · 50K Reviews",
     image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=700&q=80",
     tags: ["Python", "Scikit-learn", "PyTorch", "DistilBERT", "NLP", "Pandas"],
-    liveDemo: "https://github.com/axatshukla",
-    codeLink: "https://github.com/axatshukla/sentiment-benchmark",
+    liveDemo: "https://github.com/axatshukla/Sentiment-Classifier",
+    codeLink: "https://github.com/axatshukla/Sentiment-Classifier",
     highlights: [
       "89.68% accuracy and 0.8968 F1 from the classical baseline.",
       "0.69 ms/review inference vs 124.90 ms for DistilBERT — 180.7× faster.",
