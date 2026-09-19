@@ -219,7 +219,7 @@ export const projects = [
     description: "Enterprise document intelligence platform combining OCR, table extraction, hybrid RAG search, grounded visual citations, financial validation, and human-in-the-loop review.",
     overview: "Built an end-to-end document processing pipeline supporting digital, scanned, and hybrid PDFs, combining selective OCR, table extraction, semantic chunking, hybrid retrieval, structured extraction, deterministic validation, and human review.",
     impactMetrics: "100% Visual Traceability · 2× Retrieval Signals · 0.0–1.0 Bounding Boxes · STP + HITL",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80",
+    image: "https://images.unsplash.com/photo-1503252947848-7338d3f92f31?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     tags: ["Python", "RAG", "OCR", "FastAPI", "React", "Streamlit"],
     technologies: ["Python", "RAG", "OCR", "PyMuPDF", "Tesseract", "BM25", "FastAPI", "React 19", "Pydantic", "Pytest"],
     liveDemo: "https://github.com/axatshukla/Doc-RAG",
